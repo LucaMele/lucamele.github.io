@@ -41,8 +41,8 @@
          "prebuild:prod": "npm run clean:dist",
        "build:prod": "webpack --config config/webpack.prod.js  --progress --profile --colors --display-error-details --display-cached --bail",
 
-    "github-deploy": "npm run build:prod && npm run github-deploy:prod",
-      "github-deploy:prod": "git subtree push --prefix dist origin master",
+    "github-deploy": "npm run build:prod && npm run github-deploy:dev",
+      "github-deploy:dev": "git subtree push --prefix dist origin gh-pages",
 
     "server": "npm run server:dev",
        "server:dev": "webpack-dev-server --config config/webpack.dev.js --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
