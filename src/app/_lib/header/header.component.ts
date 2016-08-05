@@ -1,36 +1,35 @@
 import { Component } from '@angular/core';
 
-import { AppState } from '../app.service';
-import { XLarge } from './x-large';
+import { Title } from './title';
+
+import { AppState } from '../../app.service';
 
 @Component({
   // The selector is what angular internally uses
   // for `document.querySelectorAll(selector)` in our index.html
   // where, in this case, selector is the string 'home'
-  selector: 'home',  // <home></home>
-  // We need to tell Angular's compiler which directives are in our template.
-  // Doing so will allow Angular to attach our behavior to an element
-  directives: [
-    XLarge
-  ],
+  selector: 'app-header',
   // We need to tell Angular's compiler which custom pipes are in our template.
   pipes: [ ],
+  // We need to tell Angular's Dependency Injection which providers are in our app.
+  providers: [
+    Title
+  ],
   // Our list of styles in our component. We may add more to compose many styles together
-  styles: [ <string>require('./home.style.scss') ],
+  styles: [ <string>require('./header.style.scss') ],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
-  templateUrl: './home.template.html'
+  templateUrl: './header.template.html'
 })
-export class Home {
+export class Header {
   // Set our default values
   localState = { value: '' };
+  data = {};
   // TypeScript public modifiers
-  constructor(public appState: AppState) {
-
+  constructor(public appState: AppState, public title: Title) {
   }
 
   ngOnInit() {
-    console.log('hello `Home` component');
-    // this.title.getData().subscribe(data => this.data = data);
+    this.data = this.title.getData();
   }
 
   submitState(value) {

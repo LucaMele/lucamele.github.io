@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 
 @Injectable()
 export class Title {
-  value = 'Angular 2';
+
   constructor(public http: Http) {
 
   }
@@ -13,7 +13,8 @@ export class Title {
     // return this.http.get('/assets/data.json')
     // .map(res => res.json());
     return {
-      value: 'AngularClass'
+      h1: 'Homepage of Luca Mele',
+      h4: '<FRONT>end Developer</FRONT>'
     };
   }
 
